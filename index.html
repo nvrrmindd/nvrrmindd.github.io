@@ -7,270 +7,257 @@
 <meta name="description" content="Fullstack developer from Almaty. Next.js, NestJS, React, Angular, PostgreSQL, Python. Projects, hackathons and experience.">
 <meta property="og:title" content="Nazyken Amanzholova — Fullstack Developer">
 <meta property="og:description" content="Projects: BriefBoard (Next.js + NestJS), Trustable? (Angular + FastAPI), Provable, and more.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23ff5a1f'/></svg>">
+<meta property="og:image" content="https://nvrrmindd.github.io/img/briefboard.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23111'/><text x='50' y='68' font-family='Helvetica,Arial' font-size='52' font-weight='700' text-anchor='middle' fill='%23fff'>na</text></svg>">
 <style>
   :root {
-    --paper: #f5f3ee; --ink: #121212; --muted: #6d6a63; --line: #dcd7cc; --card: #ffffff; --accent: #ff5a1f;
-    --sans: "Inter", "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
-    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --bg: #ffffff; --fg: #111111; --dim: #7a7a7a; --rule: #e8e8e8; --soft: #f4f4f2;
+    --sans: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 var(--sans); -webkit-font-smoothing: antialiased; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.5 var(--sans); -webkit-font-smoothing: antialiased; }
   a { color: inherit; }
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  img { max-width: 100%; height: auto; display: block; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+  .mono { font-family: var(--mono); font-size: 12px; letter-spacing: .03em; text-transform: uppercase; }
 
-  nav { display: flex; justify-content: space-between; align-items: center; padding: 22px 0; }
-  nav .logo { font-weight: 650; letter-spacing: -.01em; text-decoration: none; }
-  nav .logo i { color: var(--accent); font-style: normal; }
-  nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; font-size: 14px; }
-  nav ul a { text-decoration: none; color: var(--muted); }
-  nav ul a:hover { color: var(--ink); }
+  /* top */
+  .top { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; }
+  .top b { font-weight: 700; }
+  .top nav { display: flex; gap: 24px; font-size: 14px; }
+  .top nav a { text-decoration: none; color: var(--dim); }
+  .top nav a:hover { color: var(--fg); }
+  .top nav a.cv { color: var(--fg); border-bottom: 1px solid var(--fg); }
 
-  header.hero { border-top: 1px solid var(--ink); padding: 64px 0 56px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: end; }
-  .hero h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(44px, 7vw, 84px); line-height: .98; letter-spacing: -.02em; margin: 0; }
-  .hero h1 em { color: var(--accent); font-style: italic; }
-  .hero p { color: var(--muted); max-width: 440px; margin: 22px 0 0; font-size: 17px; }
-  .hero aside { font-size: 14px; }
-  .hero aside dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 8px 18px; }
-  .hero aside dt { color: var(--muted); }
-  .hero aside dd { margin: 0; }
-  .btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
-  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 999px; background: var(--ink); color: var(--paper); text-decoration: none; font-size: 14px; font-weight: 500; transition: background .15s; }
-  .btn:hover { background: var(--accent); }
-  .btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
-  .btn.ghost:hover { border-color: var(--ink); background: transparent; }
+  .hero { padding: 72px 0 88px; }
+  .hero h1 { font-size: clamp(38px, 5.4vw, 74px); line-height: 1; letter-spacing: -.035em; font-weight: 700; margin: 0; max-width: 1050px; }
+  .hero h1 span { color: var(--dim); }
+  .hero .meta { display: flex; flex-wrap: wrap; gap: 10px 40px; margin-top: 40px; font-size: 15px; }
+  .hero .meta div { min-width: 160px; }
+  .hero .meta small { display: block; color: var(--dim); font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 2px; }
 
-  section { padding: 56px 0; border-top: 1px solid var(--line); }
-  .sec-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 28px; }
-  h2 { font-family: var(--serif); font-weight: 500; font-size: 34px; letter-spacing: -.01em; margin: 0; }
-  .sec-head span { color: var(--muted); font-size: 14px; }
+  /* projects */
+  .proj { padding: 72px 0; background: var(--p-bg); color: var(--p-fg); }
+  .proj .wrap { display: grid; grid-template-columns: 5fr 7fr; gap: 56px; align-items: center; }
+  .proj .num { color: var(--p-acc); }
+  .proj h2 { font-size: clamp(36px, 4.4vw, 60px); letter-spacing: -.03em; line-height: 1; margin: 14px 0 16px; }
+  .proj p { margin: 0 0 18px; opacity: .85; }
+  .proj ul { margin: 0 0 22px; padding: 0; list-style: none; font-size: 15px; }
+  .proj li { padding: 8px 0; border-top: 1px solid var(--p-rule); }
+  .proj .stack { font-family: var(--mono); font-size: 12px; opacity: .6; margin-bottom: 22px; }
+  .proj .award { display: inline-block; font-family: var(--mono); font-size: 12px; padding: 4px 10px; background: var(--p-acc); color: var(--p-on); margin-left: 12px; vertical-align: middle; }
+  .proj .go { display: flex; gap: 12px; flex-wrap: wrap; }
+  .proj .go a { text-decoration: none; font-size: 14px; font-weight: 600; padding: 10px 18px; border: 1px solid var(--p-fg); }
+  .proj .go a:first-child { background: var(--p-fg); color: var(--p-bg); }
+  .proj .go a:hover { opacity: .8; }
+  .shot { border-radius: 10px; overflow: hidden; box-shadow: 0 30px 60px -20px rgba(0,0,0,.35); border: 1px solid var(--p-rule); transition: transform .3s; }
+  .shot:hover { transform: translateY(-4px); }
+  .bar { height: 26px; background: var(--p-bar); display: flex; gap: 6px; align-items: center; padding: 0 10px; }
+  .bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--p-rule); }
 
-  .featured { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-  .card { background: var(--card); border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 12px; }
-  .card .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
-  .card h3 { margin: 0; font-size: 21px; letter-spacing: -.01em; }
-  .badge { font-size: 12px; padding: 4px 10px; border-radius: 999px; background: #fff1eb; color: #b8410f; white-space: nowrap; }
-  .card p { margin: 0; color: #3b3935; font-size: 15px; }
-  .card ul.facts { margin: 0; padding-left: 18px; font-size: 14px; color: #3b3935; }
-  .card ul.facts li { margin: 3px 0; }
-  .stack { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 6px; }
-  .stack span { font-size: 12px; padding: 3px 9px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); }
-  .links { display: flex; gap: 16px; font-size: 14px; font-weight: 500; }
-  .links a { text-decoration: none; border-bottom: 1px solid var(--line); }
-  .links a:hover { border-color: var(--accent); color: var(--accent); }
-  .card.new { outline: 2px solid var(--ink); }
+  .p1 { --p-bg: #efe9df; --p-fg: #161412; --p-acc: #ff5a1f; --p-on: #fff; --p-rule: rgba(0,0,0,.12); --p-bar: #e2dbcf; }
+  .p2 { --p-bg: #150d22; --p-fg: #f3effa; --p-acc: #c3aaff; --p-on: #150d22; --p-rule: rgba(255,255,255,.14); --p-bar: #22173a; }
+  .p3 { --p-bg: #0b0b0b; --p-fg: #f2f2f2; --p-acc: #35e0a1; --p-on: #0b0b0b; --p-rule: rgba(255,255,255,.14); --p-bar: #1a1a1a; }
+  .p2 .wrap > :first-child { order: 2; }
 
-  table.more { width: 100%; border-collapse: collapse; font-size: 15px; }
-  table.more td { padding: 14px 10px 14px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
-  table.more td:first-child { font-weight: 600; white-space: nowrap; width: 190px; }
-  table.more td:first-child a { text-decoration: none; border-bottom: 1px solid var(--line); }
-  table.more td.st { color: var(--muted); font-size: 13px; width: 260px; }
+  /* sections */
+  section.block { padding: 96px 0 0; }
+  .head { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--fg); padding-bottom: 12px; margin-bottom: 28px; }
+  .head h3 { font-size: 28px; letter-spacing: -.02em; margin: 0; }
+  .head a, .head span { color: var(--dim); font-size: 14px; text-decoration: none; }
 
-  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-  .item { padding: 0 0 22px; }
-  .item .row { display: flex; justify-content: space-between; gap: 12px; }
-  .item b { font-weight: 600; }
-  .item .when { color: var(--muted); font-size: 14px; white-space: nowrap; }
-  .item .role { font-style: italic; color: var(--muted); font-size: 15px; }
-  .item ul { margin: 8px 0 0; padding-left: 18px; font-size: 15px; }
-  ol.wins { list-style: none; padding: 0; margin: 0; }
-  ol.wins li { display: grid; grid-template-columns: 90px 1fr; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
-  ol.wins li b { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--accent); }
-  .skills { display: grid; grid-template-columns: 160px 1fr; gap: 10px 20px; font-size: 15px; }
-  .skills dt { color: var(--muted); }
-  .skills dd { margin: 0; }
+  /* hackathons */
+  .wins { display: grid; grid-template-columns: repeat(5, 1fr); border-left: 1px solid var(--rule); }
+  .win { padding: 4px 20px 8px; border-right: 1px solid var(--rule); }
+  .win b { display: block; font-size: 64px; line-height: 1; letter-spacing: -.05em; }
+  .win b sup { font-size: 20px; letter-spacing: 0; vertical-align: top; position: relative; top: 8px; margin-left: 2px; }
+  .win b em { font-style: normal; font-size: 22px; color: var(--dim); letter-spacing: -.01em; }
+  .win span { display: block; margin-top: 14px; font-size: 14px; color: #444; }
 
-  footer { border-top: 1px solid var(--ink); padding: 44px 0 60px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px; }
-  footer h2 { font-size: 42px; }
-  footer .muted { color: var(--muted); font-size: 14px; }
+  /* more work */
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .card { background: var(--soft); padding: 22px; text-decoration: none; display: flex; flex-direction: column; gap: 10px; transition: background .2s; }
+  .card:hover { background: #ebebe8; }
+  .card h4 { margin: 0; font-size: 18px; letter-spacing: -.01em; display: flex; justify-content: space-between; }
+  .card h4::after { content: "↗"; color: var(--dim); font-weight: 400; }
+  .card p { margin: 0; font-size: 14px; color: #444; flex: 1; }
+  .card .mono { color: var(--dim); text-transform: none; }
+  .card.wide { grid-column: span 2; background: var(--fg); color: #fff; }
+  .card.wide p { color: #cfcfcf; }
+  .card.wide:hover { background: #262626; }
 
-  @media (max-width: 760px) {
-    nav ul { display: none; }
-    header.hero, .featured, .cols { grid-template-columns: 1fr; }
-    header.hero { padding-top: 40px; }
-    table.more td.st { display: none; }
-    table.more td:first-child { width: auto; white-space: normal; }
-    .skills { grid-template-columns: 1fr; gap: 2px; }
-    .skills dd { margin-bottom: 10px; }
+  /* about */
+  .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .cols h5 { margin: 0 0 14px; }
+  .entry { padding: 14px 0; border-top: 1px solid var(--rule); font-size: 15px; }
+  .entry b { display: block; }
+  .entry small { color: var(--dim); display: block; font-size: 13px; }
+  .entry div { margin-top: 6px; color: #444; font-size: 14px; }
+
+  footer { margin-top: 120px; background: var(--fg); color: #fff; padding: 72px 0 40px; }
+  footer .big { font-size: clamp(32px, 6vw, 84px); letter-spacing: -.04em; font-weight: 700; line-height: 1; text-decoration: none; display: inline-block; border-bottom: 3px solid #fff; }
+  footer .row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-top: 56px; color: #9a9a9a; font-size: 14px; }
+  footer .row a { color: #fff; text-decoration: none; margin-right: 24px; }
+
+  @media (max-width: 900px) {
+    .wrap { padding: 0 16px; }
+    .top nav a:not(.cv) { display: none; }
+    .hero { padding: 40px 0 56px; }
+    .proj { padding: 48px 0; }
+    .proj .wrap { grid-template-columns: 1fr; gap: 32px; }
+    .p2 .wrap > :first-child { order: 0; }
+    .wins { grid-template-columns: 1fr 1fr; border-left: 0; }
+    .win { border-right: 0; border-top: 1px solid var(--rule); padding: 16px 0; }
+    .grid, .cols { grid-template-columns: 1fr; }
+    .card.wide { grid-column: auto; }
   }
 </style>
 </head>
 <body>
+
 <div class="wrap">
-  <nav>
-    <a class="logo" href="#">nazyken<i>.</i></a>
-    <ul>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#awards">Hackathons</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  <div class="top">
+    <b>Fullstack developer · Almaty</b>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#hackathons">Hackathons</a>
+      <a href="#about">About</a>
+      <a class="cv" href="cv.pdf">CV ↓</a>
+    </nav>
+  </div>
 
   <header class="hero">
-    <div>
-      <h1>Nazyken<br>Amanzholova<br><em>fullstack developer</em></h1>
-      <p>I build web products end to end: React / Next.js and Angular on the front, NestJS, FastAPI and Spring Boot on the back, PostgreSQL underneath. Two hackathon finals in 2026, both as the team's only developer.</p>
-      <div class="btns">
-        <a class="btn" href="cv.pdf">Download CV ↓</a>
-        <a class="btn ghost" href="https://github.com/nvrrmindd">GitHub</a>
-        <a class="btn ghost" href="mailto:kken77701@gmail.com">Email</a>
-      </div>
+    <h1>Nazyken Amanzholova</h1>
+    <div class="meta">
+      <div><small>Front</small>React, Next.js, Angular</div>
+      <div><small>Back</small>NestJS, FastAPI, Spring Boot</div>
+      <div><small>Studying</small>KBTU, Information Systems · 2027</div>
+      <div><small>Looking for</small>Job or internship · on-site / hybrid</div>
     </div>
-    <aside>
-      <dl>
-        <dt>Based in</dt><dd>Almaty, Kazakhstan</dd>
-        <dt>Studying</dt><dd>B.Sc. Information Systems, KBTU · 2027</dd>
-        <dt>Now</dt><dd>EPAM × Tech Orda Java program</dd>
-        <dt>Looking for</dt><dd>Fullstack / frontend / backend internship</dd>
-        <dt>Languages</dt><dd>Kazakh, Russian, English</dd>
-      </dl>
-    </aside>
   </header>
+</div>
 
-  <section id="projects">
-    <div class="sec-head"><h2>Selected projects</h2><span>code for all of them is public</span></div>
-    <div class="featured">
-
-      <article class="card new">
-        <div class="top"><h3>BriefBoard</h3><span class="badge">Fullstack · 2026</span></div>
+<div id="work">
+  <article class="proj p1">
+    <div class="wrap">
+      <div>
+        <div class="mono num">01 — Fullstack · 2026</div>
+        <h2>BriefBoard</h2>
         <p>Client brief → project → delivery board for a creative studio. Clients send a brief from a public page; the team accepts it and moves the project across a kanban board.</p>
-        <ul class="facts">
+        <ul>
           <li>Accepting a brief runs in a DB transaction with a row lock, so no duplicate projects</li>
-          <li>JWT auth, role guard, optimistic drag & drop with rollback</li>
+          <li>JWT auth, role guard, optimistic drag &amp; drop with rollback</li>
           <li>20 automated tests (unit + e2e on real PostgreSQL), Docker, CI</li>
         </ul>
-        <div class="stack"><span>Next.js 16</span><span>React 19</span><span>NestJS</span><span>TypeScript</span><span>TypeORM</span><span>PostgreSQL</span><span>Docker</span></div>
-        <div class="links"><a href="https://github.com/nvrrmindd/briefboard">Code →</a></div>
-      </article>
+        <div class="stack">Next.js 16 · React 19 · NestJS · TypeScript · TypeORM · PostgreSQL · Docker</div>
+        <div class="go"><a href="https://github.com/nvrrmindd/briefboard">View code</a></div>
+      </div>
+      <a class="shot" href="https://github.com/nvrrmindd/briefboard"><div class="bar"><i></i><i></i><i></i></div><img src="img/briefboard.jpg" alt="BriefBoard dashboard: inbox with client briefs and a kanban board" loading="lazy" width="1440" height="900"></a>
+    </div>
+  </article>
 
-      <article class="card">
-        <div class="top"><h3>Trustable?</h3><span class="badge">Finalist · top 15 of 400</span></div>
+  <article class="proj p2">
+    <div class="wrap">
+      <div>
+        <div class="mono num">02 — WIT Teens Challenge 2026</div>
+        <h2>Trustable?<span class="award">top 15 / 400</span></h2>
         <p>Checks AI answers and student papers against real sources: DOI, Crossref and OpenAlex lookup, verbatim-quote evidence, number-mismatch detection.</p>
-        <ul class="facts">
+        <ul>
           <li>0 false accusations on a 72-reference benchmark</li>
           <li>Validated the problem with a survey of 56 students</li>
-          <li>Team captain and sole developer · WIT Teens Challenge 2026</li>
+          <li>Team captain and sole developer</li>
         </ul>
-        <div class="stack"><span>Angular 20</span><span>FastAPI</span><span>asyncio</span><span>LLM APIs</span><span>Docker</span><span>Render</span></div>
-        <div class="links"><a href="https://pruf-35gj.onrender.com">Live demo →</a><a href="https://github.com/nvrrmindd/AITrust">Code →</a></div>
-      </article>
+        <div class="stack">Angular 20 · FastAPI · asyncio · LLM APIs · Docker · Render</div>
+        <div class="go"><a href="https://pruf-35gj.onrender.com">Live demo</a><a href="https://github.com/nvrrmindd/AITrust">Code</a></div>
+      </div>
+      <a class="shot" href="https://pruf-35gj.onrender.com"><div class="bar"><i></i><i></i><i></i></div><img src="img/trustable.jpg" alt="Trustable? landing page with highlighted claims and source checks" loading="lazy" width="1440" height="960"></a>
+    </div>
+  </article>
 
-      <article class="card">
-        <div class="top"><h3>Provable</h3><span class="badge">Finalist · top 8 of 108</span></div>
+  <article class="proj p3">
+    <div class="wrap">
+      <div>
+        <div class="mono num">03 — STAT.DATATHON-2026</div>
+        <h2>Provable<span class="award">top 8 / 108</span></h2>
         <p>AI assistant for analysts of official statistics: decides whether a conclusion is valid at household or only at regional level, and refuses claims the data can't support.</p>
-        <ul class="facts">
+        <ul>
           <li>Audited 253 indicator pairs on 23,884 households</li>
           <li>In-browser analysis of any table, nothing is uploaded</li>
-          <li>Team captain and sole developer · STAT.DATATHON-2026</li>
+          <li>Team captain and sole developer</li>
         </ul>
-        <div class="stack"><span>Python</span><span>pandas</span><span>Plotly</span><span>JavaScript</span><span>Claude API</span></div>
-        <div class="links"><a href="https://nvrrmindd.github.io/statproof/">Live site →</a><a href="https://github.com/nvrrmindd/statproof">Code →</a></div>
-      </article>
-
-      <article class="card">
-        <div class="top"><h3>TeamUp</h3><span class="badge">Team of 5 · 2026</span></div>
-        <p>Platform for amateur sports tournaments: events, teams, sign-ups and schedules instead of scattered Telegram chats.</p>
-        <ul class="facts">
-          <li>Frontend developer: React screens from a Figma prototype</li>
-          <li>Node.js backend with SQLite, session auth</li>
-          <li>GitHub pull-request flow, Notion task board</li>
-        </ul>
-        <div class="stack"><span>React 18</span><span>Vite</span><span>React Router</span><span>Node.js</span><span>SQLite</span></div>
-        <div class="links"><a href="https://github.com/Aiba1/TeamUp">Code →</a></div>
-      </article>
-    </div>
-  </section>
-
-  <section>
-    <div class="sec-head"><h2>More work</h2><span>github.com/nvrrmindd</span></div>
-    <table class="more">
-      <tr><td><a href="https://github.com/nvrrmindd/WEB-Project">SupportHer</a></td><td>Women's support platform with JWT auth, an Angular HTTP interceptor, user profiles and resource CRUD.</td><td class="st">Angular · Django · PostgreSQL</td></tr>
-      <tr><td><a href="https://github.com/nvrrmindd/MusicFy">MusicFy</a></td><td>Artists, albums and song-lyric annotations.</td><td class="st">Angular · Django</td></tr>
-      <tr><td><a href="https://github.com/nvrrmindd/Bloom">Bloom</a></td><td>Beauty-salon booking: services catalogue, stylist schedules, double-booking prevention, admin page.</td><td class="st">PHP · HTML · CSS</td></tr>
-      <tr><td><a href="https://github.com/nvrrmindd/AlmatyGo">AlmatyGo</a></td><td>iOS app for finding places in Almaty by category and price, with favourites.</td><td class="st">Swift · UIKit · URLSession</td></tr>
-      <tr><td><a href="https://github.com/nvrrmindd/statdata">statdata</a></td><td>Descriptive analytics of Kazakhstan's synthetic statistical microdata 2021–2024: 236 tables, 72.6M rows.</td><td class="st">Python · DuckDB · pandas</td></tr>
-      <tr><td><a href="https://github.com/nvrrmindd/WISH">WISH</a></td><td>Fine-tuned XLM-RoBERTa-large to find the position of a missing word in Kazakh sentences, with synthetic training data. 4th place, accuracy 0.686 (1st: 0.77).</td><td class="st">PyTorch · Hugging Face · scikit-learn</td></tr>
-      <tr><td><a href="https://github.com/nvrrmindd/spring-boot">Spring Boot</a></td><td>Backend course practice: Maven, profiles, typed config, dependency injection.</td><td class="st">Java · Spring Boot</td></tr>
-      <tr><td><a href="https://github.com/nvrrmindd/react">React course</a></td><td>React tasks: routing, auth, PWA, midterm project.</td><td class="st">React</td></tr>
-      <tr><td><a href="https://github.com/nvrrmindd/QueenCodes2025">QueenCODES 2025</a></td><td>Competitive programming contest. 1st place.</td><td class="st">C++</td></tr>
-    </table>
-  </section>
-
-  <section id="experience">
-    <div class="cols">
-      <div>
-        <div class="sec-head"><h2>Experience</h2></div>
-        <div class="item">
-          <div class="row"><b>Tengizchevroil (TCO)</b><span class="when">Aug – Sep 2026</span></div>
-          <div class="role">Cybersecurity Intern (paid) · Atyrau</div>
-          <ul>
-            <li>Rotated across four teams: Information Risk Management, Data Privacy, IT Reliability, Cybersecurity Intelligence</li>
-            <li>Processed IT and security requests in ServiceNow</li>
-          </ul>
-        </div>
-        <div class="item">
-          <div class="row"><b>KMG PetroChem</b><span class="when">Summer 2026</span></div>
-          <div class="role">IT Specialist Intern · Atyrau</div>
-          <ul><li>First-line technical support, IT operations and documentation</li></ul>
-        </div>
+        <div class="stack">Python · pandas · Plotly · JavaScript · Claude API</div>
+        <div class="go"><a href="https://nvrrmindd.github.io/statproof/">Live site</a><a href="https://github.com/nvrrmindd/statproof">Code</a></div>
       </div>
-      <div>
-        <div class="sec-head"><h2>Education</h2></div>
-        <div class="item">
-          <div class="row"><b>Kazakh-British Technical University</b><span class="when">2023 – 2027</span></div>
-          <div class="role">B.Sc. Information Systems · State grant</div>
-          <ul><li>Diploma: multi-agent LLM system for software vulnerability detection (team of 4)</li></ul>
-        </div>
-        <div class="item">
-          <div class="row"><b>EPAM × Tech Orda</b><span class="when">Oct 2026 – now</span></div>
-          <div class="role">Java Development with AI Tools · 29 weeks</div>
-        </div>
-        <div class="item">
-          <div class="row"><b>Cisco Networking Academy</b></div>
-          <div class="role">Junior Cybersecurity Analyst · Cybersecurity Essentials</div>
-        </div>
-      </div>
+      <a class="shot" href="https://nvrrmindd.github.io/statproof/"><div class="bar"><i></i><i></i><i></i></div><img src="img/provable.jpg" alt="Provable landing page: upload data, get proven conclusions" loading="lazy" width="1440" height="960"></a>
     </div>
-  </section>
-
-  <section id="awards">
-    <div class="cols">
-      <div>
-        <div class="sec-head"><h2>Hackathons</h2></div>
-        <ol class="wins">
-          <li><b>1st</b><span>QueenCODES 2025, competitive programming</span></li>
-          <li><b>4th</b><span>Women in STEM WISH, Freedom Finance ML case (~140 applicants), accuracy 0.686</span></li>
-          <li><b>Top 8</b><span>STAT.DATATHON-2026 final, 108 teams</span></li>
-          <li><b>Top 15</b><span>WIT Teens Challenge 2026 final, 400 participants</span></li>
-          <li><b>—</b><span>Women's Hack Day 2026 (NU ACM-W), product-design case for Freedom Broker</span></li>
-        </ol>
-      </div>
-      <div>
-        <div class="sec-head"><h2>Skills</h2></div>
-        <dl class="skills">
-          <dt>Frontend</dt><dd>React, Next.js, Angular, TypeScript, Tailwind CSS, HTML/CSS</dd>
-          <dt>Backend</dt><dd>NestJS, Node.js, FastAPI, Django, Spring Boot, REST, JWT</dd>
-          <dt>Data</dt><dd>PostgreSQL, TypeORM, SQL, pandas, DuckDB</dd>
-          <dt>ML</dt><dd>PyTorch, Hugging Face Transformers, scikit-learn</dd>
-          <dt>Mobile</dt><dd>Swift, UIKit</dd>
-          <dt>Tools</dt><dd>Git, GitHub Actions, Docker, Jest, Figma, Notion</dd>
-        </dl>
-      </div>
-    </div>
-  </section>
-
-  <footer id="contact">
-    <div>
-      <h2>Let's talk.</h2>
-      <p class="muted">Open to internships in Almaty, hybrid or on-site.</p>
-    </div>
-    <div class="btns">
-      <a class="btn" href="mailto:kken77701@gmail.com">kken77701@gmail.com</a>
-      <a class="btn ghost" href="https://github.com/nvrrmindd">github.com/nvrrmindd</a>
-    </div>
-  </footer>
+  </article>
 </div>
+
+<div class="wrap">
+  <section class="block" id="hackathons">
+    <div class="head"><h3>Hackathons</h3><span>2025–2026</span></div>
+    <div class="wins">
+      <div class="win"><b>1<sup>st</sup></b><span>QueenCODES 2025, competitive programming</span></div>
+      <div class="win"><b>4<sup>th</sup></b><span>Women in STEM WISH, Freedom Finance ML case (~140 applicants)</span></div>
+      <div class="win"><b>8<em>/108</em></b><span>STAT.DATATHON-2026 final</span></div>
+      <div class="win"><b>12<em>/60</em></b><span>Women's Hack Day 2026 (NU ACM-W), product-design case for Freedom Broker</span></div>
+      <div class="win"><b>15<em>/400</em></b><span>WIT Teens Challenge 2026 final</span></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="head"><h3>More work</h3><a href="https://github.com/nvrrmindd">github.com/nvrrmindd ↗</a></div>
+    <div class="grid">
+      <a class="card wide" href="https://github.com/Aiba1/TeamUp"><h4>TeamUp</h4><p>Platform for amateur sports tournaments: events, teams, sign-ups and schedules instead of scattered Telegram chats. Frontend developer in a team of 5: React screens from a Figma prototype, Node.js + SQLite backend, PR flow on GitHub.</p><span class="mono">React 18 · Vite · React Router · Node.js · SQLite</span></a>
+      <a class="card" href="https://github.com/nvrrmindd/WISH"><h4>WISH</h4><p>Fine-tuned XLM-RoBERTa-large to find a missing word's position in Kazakh sentences. 4th place, accuracy 0.686 (1st: 0.77).</p><span class="mono">PyTorch · Hugging Face</span></a>
+      <a class="card" href="https://github.com/nvrrmindd/WEB-Project"><h4>SupportHer</h4><p>Women's support platform with JWT auth, an Angular HTTP interceptor, user profiles and resource CRUD.</p><span class="mono">Angular · Django · PostgreSQL</span></a>
+      <a class="card" href="https://github.com/nvrrmindd/statdata"><h4>statdata</h4><p>Descriptive analytics of Kazakhstan's synthetic statistical microdata 2021–2024: 236 tables, 72.6M rows.</p><span class="mono">Python · DuckDB · pandas</span></a>
+      <a class="card" href="https://github.com/nvrrmindd/AlmatyGo"><h4>AlmatyGo</h4><p>iOS app for finding places in Almaty by category and price, with favourites.</p><span class="mono">Swift · UIKit</span></a>
+      <a class="card" href="https://github.com/nvrrmindd/Bloom"><h4>Bloom</h4><p>Beauty-salon booking: services catalogue, stylist schedules, double-booking prevention, admin page.</p><span class="mono">PHP · HTML · CSS</span></a>
+      <a class="card" href="https://github.com/nvrrmindd/MusicFy"><h4>MusicFy</h4><p>Artists, albums and song-lyric annotations.</p><span class="mono">Angular · Django</span></a>
+      <a class="card" href="https://github.com/nvrrmindd/QueenCodes2025"><h4>QueenCODES 2025</h4><p>Competitive programming contest. 1st place.</p><span class="mono">C++</span></a>
+      <a class="card" href="https://github.com/nvrrmindd/spring-boot"><h4>Spring Boot</h4><p>Backend course practice: Maven, profiles, typed config, dependency injection.</p><span class="mono">Java · Spring Boot</span></a>
+      <a class="card" href="https://github.com/nvrrmindd/react"><h4>React course</h4><p>React tasks: routing, auth, PWA, midterm project.</p><span class="mono">React</span></a>
+    </div>
+  </section>
+
+  <section class="block" id="about">
+    <div class="head"><h3>About</h3><span>Kazakh · Russian · English</span></div>
+    <div class="cols">
+      <div>
+        <h5 class="mono">Experience</h5>
+        <div class="entry"><b>Tengizchevroil (TCO)</b><small>Cybersecurity Intern (paid) · Atyrau · Aug–Sep 2026</small><div>Rotated across Information Risk Management, Data Privacy, IT Reliability and Cybersecurity Intelligence; handled IT and security requests in ServiceNow.</div></div>
+        <div class="entry"><b>KMG PetroChem</b><small>IT Specialist Intern · Atyrau · Summer 2026</small><div>First-line technical support, IT operations and documentation.</div></div>
+      </div>
+      <div>
+        <h5 class="mono">Education</h5>
+        <div class="entry"><b>Kazakh-British Technical University</b><small>B.Sc. Information Systems · state grant · 2023–2027</small><div>Diploma: multi-agent LLM system for software vulnerability detection (team of 4).</div></div>
+        <div class="entry"><b>EPAM × Tech Orda</b><small>Java Development with AI Tools · Oct 2026–now</small></div>
+        <div class="entry"><b>Cisco Networking Academy</b><small>Junior Cybersecurity Analyst · Cybersecurity Essentials</small></div>
+      </div>
+      <div>
+        <h5 class="mono">Skills</h5>
+        <div class="entry"><b>Frontend</b><div>React, Next.js, Angular, TypeScript, Tailwind CSS, HTML/CSS</div></div>
+        <div class="entry"><b>Backend</b><div>NestJS, Node.js, FastAPI, Django, Spring Boot, REST, JWT</div></div>
+        <div class="entry"><b>Data &amp; ML</b><div>PostgreSQL, TypeORM, SQL, pandas, DuckDB, PyTorch, Hugging Face, scikit-learn</div></div>
+        <div class="entry"><b>Mobile &amp; tools</b><div>Swift, UIKit · Git, GitHub Actions, Docker, Jest, Figma, Notion</div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="mono" style="color:#9a9a9a;margin-bottom:18px">Open to jobs and internships in Almaty</div>
+    <a class="big" href="mailto:kken77701@gmail.com">kken77701@gmail.com</a>
+    <div class="row">
+      <div><a href="https://github.com/nvrrmindd">GitHub</a><a href="cv.pdf">CV (PDF)</a></div>
+      <div>Almaty, Kazakhstan</div>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
